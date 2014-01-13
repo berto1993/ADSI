@@ -10,7 +10,7 @@ public class Equipo
 	private int idCod;
 	private ListaJugadores listaConvocados;
 	
-	public Equipo(String pNombre, String pEstadio, int pIdCodm ¿int? pEntrenador) 
+	public Equipo(String pNombre, String pEstadio, int pIdCodm ,¿int? pEntrenador)
 	{
 		this.nombre = pNombre;
 		this.estadio = pEstadio;
