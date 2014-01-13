@@ -1,6 +1,6 @@
 package packModelo;
 
-public class Admistrador 
+public class Administrador 
 {
 	private String usuario;
 	private String contrasena;
