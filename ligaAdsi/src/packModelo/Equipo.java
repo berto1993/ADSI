@@ -4,7 +4,7 @@ public class Equipo
 {
 	private String nombre;
 	private int puntos;
-	private ¿int? entrenador;
+	private //¿int? entrenador;
 	private String estadio;
 	private ListaJugadores jugadores;
 	private int idCod;
