@@ -53,5 +53,28 @@ public class Liga
 			}
 		
 	}
-
+	
+	public String[] calcularClasificacion ()
+	{
+		if (temporadas.size()==0)
+		{
+			JOptionPane.showMessageDialog(null,"No existe temporadas","Error",JOptionPane.ERROR_MESSAGE);
+		}
+		else
+		{
+			Temporada aCalcular = getTemporada(temporadas.size()-1);
+			ListaEquipos listaEquiposTemporada = aCalcular.getEquipos();
+			listaEquiposTemporada.ordenar();
+			Iterator<Equipo> it = listaEquiposTemporada.getIterator();
+			Equipo aux;
+			int i = 0;
+			String [] resultados;
+			while (it.hasNext())
+			{
+				aux = it.next();
+				resultados[i] = aux.getNombre() + "-->" + aux.getPuntos(); 
+			}
+			
+		
+	}
 }

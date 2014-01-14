@@ -29,4 +29,14 @@ public class Equipo
 	{
 		return jugadores.getLista();
 	}
+
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public int getPuntos() 
+	{
+		return puntos;
+	}
 }
