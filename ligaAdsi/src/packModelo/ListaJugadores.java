@@ -10,6 +10,11 @@ public class ListaJugadores
 	{
 		lista = new LinkedList<Jugador>();
 	}
+
+	public LinkedList<Jugador> getLista() 
+	{
+		return lista;
+	}
 	
 	
 }

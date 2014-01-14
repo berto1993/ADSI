@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JDialog;
@@ -36,6 +37,19 @@ public class Liga
 			{
 			Temporada aCalcular = getTemporada(temporadas.size()-1);
 			ListaEquipos listaEquiposTemporada = aCalcular.getEquipos();
+			
+			Iterator<Equipo> itE = listaEquiposTemporada.getIterator();
+			Equipo equi= null;
+			LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
+			
+			while (itE.hasNext())
+			{
+				equi = itE.next();
+				listaJugadores.addAll(equi.getListaJugadoresEquipo());
+			}
+			
+			Iterator<Jugador> it = listaJugadores.iterator();
+			a
 			}
 		
 	}

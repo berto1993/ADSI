@@ -1,5 +1,8 @@
 package packModelo;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 public class Equipo 
 {
 	private String nombre;
@@ -19,5 +22,11 @@ public class Equipo
 		entrenador = pEntrenador;
 		jugadores = null;
 		listaConvocados = null;
+	}
+
+
+	public LinkedList<Jugador> getListaJugadoresEquipo() 
+	{
+		return jugadores.getLista();
 	}
 }
