@@ -26,7 +26,7 @@ public class Partido
 		equipoV = pEquipoV;
 		listaConvocados = new ListaConvocados();
 		listaGoles = new ListaGoles();
-		listaTarjetas = new ListaTarjetaPartidoJugador;
+		listaTarjetas = new ListaTarjetaPartidoJugador();
 		listaTitulares = new ListaTitulares();
 		listaReemplazos = new ListaSustitucion();
 	}

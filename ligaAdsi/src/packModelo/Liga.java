@@ -14,5 +14,11 @@ public class Liga
 		listaEquiposTotal = new ListaEquipos();				
 		
 	}
+	
+	public void calcularFairplay()
+	{
+		//Al terminar el calculo abre la interfaz de fairplay pasandole
+		//como parametros las listas de equipos y jugadores
+	}
 
 }
