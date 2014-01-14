@@ -14,5 +14,9 @@ public class Temporada
 	{
 	no se que va aqui	
 	}
-
+	
+	public ListaEquipos getEquipos()
+	{
+		return equipos;
+	}
 }
