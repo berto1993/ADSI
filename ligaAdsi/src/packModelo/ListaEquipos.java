@@ -1,7 +1,10 @@
 package packModelo;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import net.sf.jga.algorithms.Sort;
 
 public class ListaEquipos 
 {
@@ -18,5 +21,9 @@ public class ListaEquipos
 	public Iterator<Equipo> getIterator()
 	{
 		return lista.iterator();
+	}
+	public void ordenar() 
+	{
+		Sort.sort(lista);
 	}
 }

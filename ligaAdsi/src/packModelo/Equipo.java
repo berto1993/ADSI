@@ -3,23 +3,23 @@ package packModelo;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class Equipo 
+public class Equipo implements Comparable<Equipo>
 {
 	private String nombre;
 	private int puntos;
-	private ¿int? entrenador;
+//	private ¿int? entrenador;
 	private String estadio;
 	private ListaJugadores jugadores;
 	private int idCod;
 	private ListaJugadores listaConvocados;
 	
-	public Equipo(String pNombre, String pEstadio, int pIdCodm ¿int? pEntrenador) 
+	public Equipo(String pNombre, String pEstadio, int pIdCod/*, ¿int? pEntrenador*/) 
 	{
 		this.nombre = pNombre;
 		this.estadio = pEstadio;
 		this.idCod = pIdCod;
 		puntos = 0;
-		entrenador = pEntrenador;
+		//entrenador = pEntrenador;
 		jugadores = null;
 		listaConvocados = null;
 	}
@@ -39,4 +39,16 @@ public class Equipo
 	{
 		return puntos;
 	}
+
+
+	@Override
+	public int compareTo(Equipo arg0) 
+	{
+		if (this.getPuntos() != arg0.getPuntos())
+			return this.getPuntos() - arg0.getPuntos();
+		else
+			return this.getNombre().compareTo(arg0.getNombre());
+	}
+	
+	
 }
