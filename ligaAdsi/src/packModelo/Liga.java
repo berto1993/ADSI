@@ -51,17 +51,29 @@ public class Liga
 				equiPun.addLast(equi.getNombre() + "-->" + aux);
 				listaJugadores.addAll(equi.getListaJugadoresEquipo());
 			}
-			String[]jugadores = preprararJugadores(listaJugadores);
+			String[]jugadores = preprararJugadores(listaJugadores, listaJugadores.size());
 			String[]Equipos = preprararEquipos(equiPun);
 			}
 		
 	}
 	
-	private String[] preprararJugadores(LinkedList<Jugador> listaJugadores) 
+	private String[] preprararEquipos(LinkedList<String> equiPun) 
 	{
-		Iterable<Jugador> lista = Sort.sort(listaJugadores);
+		Iterable<String> aux = Sort.sort(equiPun, new comparatorString());
+		Iterator<String> it = aux.iterator();
+		String [] resul = new String[equiPun.size()];
+		for (int i = 0 ; it.hasNext() ; i++)
+		{
+			resul[i] = it.next();
+		}
+		return resul;
+	}
+
+	private String[] preprararJugadores(LinkedList<Jugador> pListaJugadores, int pTamano) 
+	{
+		Iterable<Jugador> lista = Sort.sort(pListaJugadores);
 		Iterator<Jugador> it = lista.iterator();
-		String[] jugadores;
+		String[] jugadores = new String[pTamano];
 		Jugador aux;
 		
 		for (int i=0 ; it.hasNext();i++)
@@ -87,7 +99,7 @@ public class Liga
 			Iterator<Equipo> it = listaEquiposTemporada.getIterator();
 			Equipo aux;
 			int i = 0;
-			String [] resultados;
+			String [] resultados = new String[listaEquiposTemporada.tamano()];
 			while (it.hasNext())
 			{
 				aux = it.next();
@@ -95,5 +107,6 @@ public class Liga
 			}
 			
 		
+		}
 	}
 }

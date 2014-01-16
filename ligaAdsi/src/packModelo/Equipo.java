@@ -49,6 +49,11 @@ public class Equipo implements Comparable<Equipo>
 		else
 			return this.getNombre().compareTo(arg0.getNombre());
 	}
+
+
+	public int calcularMediaTarjetasJugador() {
+		return jugadores.calcularMediaTarjetasJugador();
+	}
 	
 	
 }

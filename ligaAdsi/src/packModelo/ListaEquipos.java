@@ -26,4 +26,8 @@ public class ListaEquipos
 	{
 		Sort.sort(lista);
 	}
+	public int tamano() 
+	{
+		return lista.size();
+	}
 }
