@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import net.sf.jga.algorithms.Sort;
+
 public class Liga 
 {
 	private LinkedList<Temporada> temporadas;
@@ -37,23 +39,40 @@ public class Liga
 			{
 			Temporada aCalcular = getTemporada(temporadas.size()-1);
 			ListaEquipos listaEquiposTemporada = aCalcular.getEquipos();
-			
+			LinkedList<String> equiPun = new LinkedList<String>();
 			Iterator<Equipo> itE = listaEquiposTemporada.getIterator();
 			Equipo equi= null;
 			LinkedList<Jugador> listaJugadores = new LinkedList<Jugador>();
-			
+			int aux = 0; 
 			while (itE.hasNext())
 			{
 				equi = itE.next();
+				aux = equi.calcularMediaTarjetasJugador();
+				equiPun.addLast(equi.getNombre() + "-->" + aux);
 				listaJugadores.addAll(equi.getListaJugadoresEquipo());
 			}
-			
-			Iterator<Jugador> it = listaJugadores.iterator();
-			a
+			String[]jugadores = preprararJugadores(listaJugadores);
+			String[]Equipos = preprararEquipos(equiPun);
 			}
 		
 	}
 	
+	private String[] preprararJugadores(LinkedList<Jugador> listaJugadores) 
+	{
+		Iterable<Jugador> lista = Sort.sort(listaJugadores);
+		Iterator<Jugador> it = lista.iterator();
+		String[] jugadores;
+		Jugador aux;
+		
+		for (int i=0 ; it.hasNext();i++)
+		{
+			aux = it.next();
+			jugadores[i] = aux.getNombre() + "(" + aux.getDorsal() + ")";
+		}
+		return jugadores;
+		
+	}
+
 	public String[] calcularClasificacion ()
 	{
 		if (temporadas.size()==0)
