@@ -30,6 +30,4 @@ public class ListaJugadores
 		}
 		return aux;
 	}
-	
-	
 }

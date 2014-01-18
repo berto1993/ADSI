@@ -24,7 +24,6 @@ public class Equipo implements Comparable<Equipo>
 		listaConvocados = null;
 	}
 
-
 	public LinkedList<Jugador> getListaJugadoresEquipo() 
 	{
 		return jugadores.getLista();
@@ -58,4 +57,5 @@ public class Equipo implements Comparable<Equipo>
 	{
 		return this.estadio;
 	}
+	bbb
 }

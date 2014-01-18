@@ -10,5 +10,4 @@ public class ListaTarjetaPartidoJugador
 	{
 		lista = new LinkedList<TarjetaPartidoJugador>()
 	}
-
 }
