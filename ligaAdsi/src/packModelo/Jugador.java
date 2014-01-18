@@ -1,6 +1,6 @@
 package packModelo;
 
-public class Jugador 
+public class Jugador implements Comparable<Jugador>
 {
 	private String nombre;
 	private int dorsal;
@@ -23,4 +23,45 @@ public class Jugador
 		expulsion = false;
 		dni = pDni;
 	}
+
+	public int compareTo(Jugador o) 
+	{
+		if (tarjetasRecibidas == o.getTarjetasRecibidas())
+		{
+			if (partidosJugados == o.getPartidosJugados())
+			{
+				return nombre.compareTo(o.getNombre());
+			}
+			else
+			{
+				return partidosJugados - o.getPartidosJugados();
+			}
+		}
+		else
+		{
+			return tarjetasRecibidas - o.getTarjetasRecibidas();
+		}
+	}
+
+	public int getPartidosJugados() 
+	{
+		return partidosJugados;
+	}
+
+	public String getNombre() 
+	{
+		return nombre;
+	}
+
+	public int getTarjetasRecibidas() 
+	{
+		return tarjetasRecibidas;
+	}
+
+	public int getDorsal() 
+	{
+		return dorsal;
+	}
+
+	
 }
