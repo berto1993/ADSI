@@ -39,5 +39,4 @@ public class ListaEquipos
 	{
 		return this.lista.get(pIndex);
 	}
-	bbb
 }

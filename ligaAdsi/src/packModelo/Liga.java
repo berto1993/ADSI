@@ -81,7 +81,6 @@ public class Liga
 			jugadores[i] = aux.getNombre() + "(" + aux.getDorsal() + ")";
 		}
 		return jugadores;
-		aaa
 	}
 
 	public String[] calcularClasificacion ()
@@ -127,5 +126,5 @@ public class Liga
 			nJornadas++;
 		}
 	}
-	bbb
+	cccasfgagasgt
 }

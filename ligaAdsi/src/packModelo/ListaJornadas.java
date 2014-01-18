@@ -15,5 +15,4 @@ public class ListaJornadas
 	{
 		this.lista.add(pJornada);
 	}
-	bbb
 }
