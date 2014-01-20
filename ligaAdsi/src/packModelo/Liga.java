@@ -123,6 +123,7 @@ public class Liga
 				j.anadirPartido(new Partido(j.getFechaInicio(), aux1, aux2, aux1.getEstadio()));	
 				nPartidos++;
 			}
+			miListaTemporadas.temporadas.getLast().addJornada(j);
 			nJornadas++;
 		}
 	}

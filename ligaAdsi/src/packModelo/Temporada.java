@@ -32,8 +32,7 @@ public class Temporada
 	
 	public Equipo cogerEquipo()
 	{
-		Equipo aux = this.getEquipos().getEquipo(Integer.parseInt(Math.random())*this.getEquipos().tamano());
-		return aux;
+		return this.getEquipos().getEquipo((int)Math.random()*this.getEquipos().tamano());
 	}
 	
 	public Date getFechaIni()
