@@ -83,7 +83,7 @@ public class Liga
 		return jugadores;
 	}
 
-	public String[] calcularClasificacion ()
+	public String[] calcularClasificacion()
 	{
 		if (temporadas.size()==0)
 		{
@@ -126,5 +126,4 @@ public class Liga
 			nJornadas++;
 		}
 	}
-	yfgkgtdtjtuiyuiofyj645456465687687
 }

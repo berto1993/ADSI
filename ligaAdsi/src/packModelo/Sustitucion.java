@@ -11,5 +11,4 @@ public class Sustitucion
 		sale = pJugadorS;
 		entra = pJugadorE;
 	}
-
 }

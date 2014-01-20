@@ -20,5 +20,4 @@ public class Gol
 	{
 		return quien;
 	}
-
 }

@@ -8,6 +8,6 @@ public class ListaTarjetaPartidoJugador
 	
 	public ListaTarjetaPartidoJugador()
 	{
-		lista = new LinkedList<TarjetaPartidoJugador>()
+		lista = new LinkedList<TarjetaPartidoJugador>();
 	}
 }
