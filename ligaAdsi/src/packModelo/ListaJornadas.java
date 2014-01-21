@@ -15,4 +15,9 @@ public class ListaJornadas
 	{
 		this.lista.add(pJornada);
 	}
+
+	public LinkedList<Jornada> getJornadas() 
+	{
+		return lista;
+	}
 }

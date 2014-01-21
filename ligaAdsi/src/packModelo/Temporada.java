@@ -1,6 +1,7 @@
 package packModelo;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Temporada 
@@ -38,5 +39,26 @@ public class Temporada
 	public Date getFechaIni()
 	{
 		return this.fechaIni;
+	}
+
+	public Date getFechaFin() {
+		// TODO Auto-generated method stub
+		return fechaFin;
+	}
+
+	public String getTemporada() 
+	{
+	
+		return fechaIni.getYear() + "-" + fechaFin.getYear();
+	}
+
+	public LinkedList<Jornada> getJornadas()
+	{
+		return jornadas.getJornadas();
+	}
+
+	public Jornada getJornada(int laJornada) 
+	{
+		return jornadas.getJornadas().get(laJornada);
 	}
 }

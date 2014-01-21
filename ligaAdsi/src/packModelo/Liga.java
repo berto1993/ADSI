@@ -127,4 +127,51 @@ public class Liga
 			nJornadas++;
 		}
 	}
+	
+	public String[] obtenerTemporadas()
+	{
+		Iterator<Temporada> it = temporadas.iterator();
+		String[] resul = new String[temporadas.size()];
+		Temporada aux;
+		
+		for (int i = 0 ; it.hasNext(); i++)
+		{
+			aux = it.next();
+			resul[i] = aux.getTemporada();
+		}
+		return resul;
+	}
+	
+	public String[] obtenerJornadas(int laTemporada)
+	{
+		Temporada temp = temporadas.get(laTemporada);
+		LinkedList<Jornada> listAux = temp.getJornadas();
+		Iterator<Jornada> it = listAux.iterator();
+		String[] resul = new String[listAux.size()];
+		Jornada aux;
+		
+		for (int i = 0; it.hasNext(); i++)
+		{
+			aux = it.next();
+			resul[i] = String.valueOf(aux.getNumJornada());
+		}
+	
+		return resul;
+	}
+	
+	public String[] obtenerEquiposPuntos(int laTemporada,int laJornada)
+	{
+		Jornada aux = temporadas.get(laTemporada).getJornada(laJornada);
+		LinkedList<PuntosJornadaEquipo> lis = aux.getEquipoYPuntos();
+		Iterator<PuntosJornadaEquipo>it = lis.iterator();
+		String[] resul = new String[lis.size()];
+		PuntosJornadaEquipo equip;
+		
+		for (int i = 0; it.hasNext(); i++)
+		{
+			equip = it.next();
+			resul[i] = equip.getEquipo().getNombre() + "->" + equip.getPuntos();
+		}
+		return resul;
+	}
 }
