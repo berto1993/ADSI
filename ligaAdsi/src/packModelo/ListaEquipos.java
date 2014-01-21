@@ -39,4 +39,24 @@ public class ListaEquipos
 	{
 		return this.lista.get(pIndex);
 	}
+
+	public Equipo getEquipoN(String equipo) 
+	{
+		Iterator<Equipo> it = lista.iterator();
+		boolean encontrado = false;
+		Equipo aux = null;
+		
+		while (it.hasNext() && !encontrado)
+		{
+			aux = it.next();
+			if (aux.getNombre().equals(equipo))
+				encontrado = true;
+		}
+		if (!encontrado)
+			{
+			aux = null;
+			}
+		
+		return aux;
+	}
 }

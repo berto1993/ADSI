@@ -30,4 +30,34 @@ public class Partido
 		listaTitulares = new ListaTitulares();
 		listaReemplazos = new ListaSustitucion();
 	}
+
+	public Equipo getEquipoV() 
+	{
+		return equipoV;
+	}
+	
+	public Equipo getEquipoL() 
+	{
+		return equipoL;
+	}
+
+	public ListaConvocados getListaConvocados() {
+		// TODO Auto-generated method stub
+		return listaConvocados;
+	}
+
+	public ListaGoles getListaGoles() 
+	{
+		return listaGoles;
+	}
+
+	public ListaSustitucion getListaReemplazos() 
+	{
+		return listaReemplazos;
+	}
+
+	public ListaTarjetaPartidoJugador getListaTarjetas() 
+	{		
+		return listaTarjetas;
+	}
 }

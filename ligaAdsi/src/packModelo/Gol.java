@@ -1,17 +1,19 @@
 package packModelo;
 
+import java.util.Date;
+
 public class Gol 
 {
-	private xx instante;
+	private Date instante;
 	private Jugador quien;
 	
-	public Gol (xx pInstante, Jugador pQuien)
+	public Gol (Date pInstante, Jugador pQuien)
 	{
 		instante = pInstante;
 		quien = pQuien;
 	}
 	
-	public xx getInstante()
+	public Date getInstante()
 	{
 		return instante;
 	}

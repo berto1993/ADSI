@@ -57,4 +57,9 @@ public class Equipo implements Comparable<Equipo>
 	{
 		return this.estadio;
 	}
+
+	public boolean esta(Jugador aux) 
+	{
+			return jugadores.getLista().contains(aux);
+	}
 }
