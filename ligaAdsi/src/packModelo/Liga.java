@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import packVista.CalcularFairplay;
 import net.sf.jga.algorithms.Sort;
 
 public class Liga 
@@ -61,9 +62,9 @@ public class Liga
 				listaJugadores.addAll(equi.getListaJugadoresEquipo());
 			}
 			String[]jugadores = preprararJugadores(listaJugadores, listaJugadores.size());
-			String[]Equipos = preprararEquipos(equiPun);
+			String[]equipos = preprararEquipos(equiPun);
+			new CalcularFairplay(jugadores, equipos);
 			}
-		
 	}
 	
 	private String[] preprararEquipos(LinkedList<String> equiPun) 
