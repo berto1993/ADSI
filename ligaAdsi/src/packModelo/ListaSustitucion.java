@@ -23,7 +23,7 @@ public class ListaSustitucion
 			
 			if (aux.getEntrante().getNombre().equals(pJugador) || aux.getSaliente().getNombre().equals(pJugador))
 			{
-				resu.addLast("Sale: "+aux.getSaliente().getNombre()+" ("+aux.getSaliente().getDorsal()") ->"+"Entra: "+aux.getEntrante().getNombre()+" ("+aux.getEntrante().getDorsal()+") ->" + aux.getInstante().getHours()+":"+aux.getInstante().getMinutes()+":"+aux.getInstante().getSeconds());
+				resu.addLast("Sale: "+aux.getSaliente().getNombre()+" ("+aux.getSaliente().getDorsal()+") ->"+"Entra: "+aux.getEntrante().getNombre()+" ("+aux.getEntrante().getDorsal()+") ->" + aux.getInstante().getHours()+":"+aux.getInstante().getMinutes()+":"+aux.getInstante().getSeconds());
 			}
 		}
 		
