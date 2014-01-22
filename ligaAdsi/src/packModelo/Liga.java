@@ -209,7 +209,8 @@ public class Liga
         
         public String[] obtenerJugadores(int temporada,int jornada, String equipo)
         {
-                LinkedList<Jugador> listaConvocados = temporadas.get(temporada).getJornada(jornada).obtenerJugadores(equipo);
+        		String pEquipo = equipo.split("->")[1];
+                LinkedList<Jugador> listaConvocados = temporadas.get(temporada).getJornada(jornada).obtenerJugadores(pEquipo);
                 return preparJugadoresEstadisticas(listaConvocados);
         }
 
@@ -232,8 +233,11 @@ public class Liga
                 return listaEquiposTotal.getEquipoN(equipo);
         }
         
-        public String[] obtenerIncidenciasJugador(int pTemporada, int pJornada, String pEquipo, String pJugador)
+        public String[] obtenerIncidenciasJugador(int pTemporada, int pJornada, String equipo, String jugador)
         {
+    		String pEquipo = equipo.split("->")[1];
+    		String pJugador = equipo.split("(")[1];
+
                 Partido part = temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo);
                 LinkedList<String> resu = new LinkedList<String>();
                 part.getListaGoles().obtenerGolesJugador(pJugador, resu);

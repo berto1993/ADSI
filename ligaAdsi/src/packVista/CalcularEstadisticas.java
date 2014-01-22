@@ -88,6 +88,8 @@ public class CalcularEstadisticas extends JFrame {
 		comboBoxJornada.setBounds(76, 33, 134, 20);
 		contentPane.add(comboBoxJornada);
 		
+		jugadores = Liga.getLiga().obtenerJugadores(comboBoxTemporada.getSelectedIndex(), comboBoxJornada.getSelectedIndex(), list_Equipos.getSelectedValue().toString());
+		
 		final JComboBox comboBoxJugador = new JComboBox(jugadores);
 		comboBoxJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -95,6 +97,8 @@ public class CalcularEstadisticas extends JFrame {
 				incidencias = Liga.getLiga().obtenerIncidenciasJugador(comboBoxTemporada.getSelectedIndex(), comboBoxJornada.getSelectedIndex(),list_Equipos.getSelectedValue().toString(), comboBoxJugador.getSelectedItem().toString());
 			}
 		});
+		
+		
 		comboBoxJugador.setBounds(233, 33, 134, 20);
 		contentPane.add(comboBoxJugador);
 		
