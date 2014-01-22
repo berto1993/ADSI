@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import packVista.CalcularFairplay;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
@@ -55,8 +57,10 @@ public class Liga
 				equiPun.addLast(equi.getNombre() + "-->" + aux);
 				listaJugadores.addAll(equi.getListaJugadoresEquipo());
 			}
-			String[]jugadores = preprararJugadores(listaJugadores, listaJugadores.size());
-			String[]Equipos = preprararEquipos(equiPun);
+			String[] jugadores = preprararJugadores(listaJugadores, listaJugadores.size());
+			String[] equipos = preprararEquipos(equiPun);
+			
+			new CalcularFairplay(jugadores, equipos);
 			}
 		
 	}

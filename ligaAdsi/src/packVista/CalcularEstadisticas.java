@@ -20,7 +20,10 @@ import java.awt.event.ActionEvent;
 public class CalcularEstadisticas extends JFrame {
 
 	private JPanel contentPane;
-
+	private String[] jornadas = null;
+	private	String[] equipos = null;
+	private String[] jugadores = null;
+	private String[] incidencias = null;
 	/**
 	 * Launch the application.
 	 */
@@ -50,10 +53,8 @@ public class CalcularEstadisticas extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		String[] jornadas = null;
-		String[] equipos = null;
-		String[] jugadores = null;
-		String[] incidencias = null;
+		final JList list_Equipos = new JList(incidencias);
+		
 		
 		JLabel lblTemporada = new JLabel("Temporada:");
 		lblTemporada.setBounds(10, 11, 58, 14);
@@ -74,7 +75,7 @@ public class CalcularEstadisticas extends JFrame {
 		lblJornada.setBounds(10, 36, 46, 14);
 		contentPane.add(lblJornada);
 		
-		final JComboBox comboBoxJornada = new JComboBox();
+		final JComboBox comboBoxJornada = new JComboBox(jornadas);
 		comboBoxJornada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -87,9 +88,11 @@ public class CalcularEstadisticas extends JFrame {
 		comboBoxJornada.setBounds(76, 33, 134, 20);
 		contentPane.add(comboBoxJornada);
 		
-		JComboBox comboBoxJugador = new JComboBox();
+		final JComboBox comboBoxJugador = new JComboBox(jugadores);
 		comboBoxJugador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				incidencias = Liga.getLiga().obtenerIncidenciasJugador(comboBoxTemporada.getSelectedIndex(), comboBoxJornada.getSelectedIndex(),list_Equipos.getSelectedValue().toString(), comboBoxJugador.getSelectedItem().toString());
 			}
 		});
 		comboBoxJugador.setBounds(233, 33, 134, 20);
@@ -104,9 +107,10 @@ public class CalcularEstadisticas extends JFrame {
 		scrollPaneEquipos.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPaneEquipos.setBounds(10, 70, 199, 185);
 		contentPane.add(scrollPaneEquipos);
-		
-		JList list_Equipos = new JList(equipos);
+	
 		scrollPaneEquipos.setViewportView(list_Equipos);
+		
+		
 		
 		JScrollPane scrollPaneIncidencias = new JScrollPane();
 		scrollPaneIncidencias.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -116,4 +120,5 @@ public class CalcularEstadisticas extends JFrame {
 		JList list_Incidencias = new JList(incidencias);
 		scrollPaneIncidencias.setViewportView(list_Incidencias);
 	}
+	
 }
