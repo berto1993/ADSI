@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -108,39 +109,48 @@ public class Liga
 				resultados[i] = aux.getNombre() + "-->" + aux.getPuntos(); 
 			}
 		}
+		return resultados;
 	}
 	
 	public void realizarSorteo()
 	{
-		int nJornadas = 1;
-		Date fechaInicio = miListaTemporadas.temporadas.getLast().getFechaIni();
-		Connection a = (Connection) ConexionDB.GetConnection();
-		Statement s = (Statement) a.createStatement();
-		
-		while (nJornadas <= 38)
+		try
 		{
-			if (nJornadas != 1)
-			{
-				int d = fechaInicio.getDate() + 7;
-				fechaInicio.setDate(d);
-			}
 			
-			Jornada j = new Jornada(nJornadas, fechaInicio);
-			int nPartidos = 1;
-			
-			while(nPartidos <= 10)
+			int nJornadas = 1;
+			Date fechaInicio = miListaTemporadas.temporadas.getLast().getFechaIni();
+			Connection a = (Connection) ConexionDB.GetConnection();
+			Statement s = (Statement) a.createStatement();
+		
+			while (nJornadas <= 38)
 			{
-				Equipo aux1 = miListaTemporadas.temporadas.getLast().cogerEquipo();
-				Equipo aux2 = miListaTemporadas.temporadas.getLast().cogerEquipo();
-				Partido p = new Partido(j.getFechaInicio(), aux1, aux2, aux1.getEstadio());
-				j.anadirPartido(p);
-				int id = nJornadas*100 + nPartidos;
-				s.executeUpdate("insert into partido values ( 0, 0, " + p.getFechaIni() + ", " + id + ", " + p.getFechaIni() + ", " + p.getFechaIni() + ", " + nJornadas);
-				nPartidos++;
+				if (nJornadas != 1)
+				{
+					int d = fechaInicio.getDate() + 7;
+					fechaInicio.setDate(d);
+				}
+			
+				Jornada j = new Jornada(nJornadas, fechaInicio);
+				int nPartidos = 1;
+			
+				while(nPartidos <= 10)
+				{
+					Equipo aux1 = miListaTemporadas.temporadas.getLast().cogerEquipo();
+					Equipo aux2 = miListaTemporadas.temporadas.getLast().cogerEquipo();
+					Partido p = new Partido(j.getFechaInicio(), aux1, aux2, aux1.getEstadio());
+					j.anadirPartido(p);
+					int id = nJornadas*100 + nPartidos;
+					s.executeUpdate("insert into partido values ( 0, 0, " + p.getFechaIni() + ", " + id + ", " + p.getFechaIni() + ", " + p.getFechaIni() + ", " + nJornadas);
+					nPartidos++;
+				}
+				miListaTemporadas.temporadas.getLast().addJornada(j);
+				s.executeUpdate("insert into jornada values ( 0, " + j.getFechaInicio() + ", , " + nJornadas);
+				nJornadas++;
 			}
-			miListaTemporadas.temporadas.getLast().addJornada(j);
-			s.executeUpdate("insert into jornada values ( 0, " + j.getFechaInicio() + ", , " + nJornadas);
-			nJornadas++;
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }

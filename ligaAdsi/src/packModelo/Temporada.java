@@ -15,7 +15,10 @@ public class Temporada
 	public Temporada(Date pFechaIni)
 	{
 		this.fechaIni = pFechaIni;
-		this.fechaFin = ;;
+		int d = pFechaIni.getMonth() + 9;
+		Date fechaFin = pFechaIni;
+		fechaFin.setMonth(d);
+		this.fechaFin = fechaFin;
 		this.jornadas = new ListaJornadas();
 		this.equipos = new ListaEquipos();
 		this.listaAplazados = new ListaPartidos();
