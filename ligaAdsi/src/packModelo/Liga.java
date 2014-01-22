@@ -1,12 +1,12 @@
 package packModelo;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import packVista.CalcularFairplay;
 import net.sf.jga.algorithms.Sort;
 
 public class Liga 
@@ -21,16 +21,6 @@ public class Liga
 		this.listaEquiposTotal = new ListaEquipos();
 	}
 	
-	public static Liga getLiga()
-	{
-		if (miListaTemporadas == null)
-			{
-			miListaTemporadas = new Liga();
-			}
-	
-		return miListaTemporadas;
-			
-	}
 	public Temporada getTemporada (int pTemporada)
 	{
 		return temporadas.get(pTemporada);
@@ -62,9 +52,9 @@ public class Liga
 				listaJugadores.addAll(equi.getListaJugadoresEquipo());
 			}
 			String[]jugadores = preprararJugadores(listaJugadores, listaJugadores.size());
-			String[]equipos = preprararEquipos(equiPun);
-			new CalcularFairplay(jugadores, equipos);
+			String[]Equipos = preprararEquipos(equiPun);
 			}
+		
 	}
 	
 	private String[] preprararEquipos(LinkedList<String> equiPun) 
@@ -99,7 +89,6 @@ public class Liga
 		if (temporadas.size()==0)
 		{
 			JOptionPane.showMessageDialog(null,"No existe temporadas","Error",JOptionPane.ERROR_MESSAGE);
-			return null;
 		}
 		else
 		{
@@ -115,19 +104,24 @@ public class Liga
 				aux = it.next();
 				resultados[i] = aux.getNombre() + "-->" + aux.getPuntos(); 
 			}
-			return resultados;
 		}
-		
 	}
 	
 	public void realizarSorteo()
 	{
 		int nJornadas = 1;
+		Date fechaInicio = miListaTemporadas.temporadas.getLast().getFechaIni();
 				
 		while (nJornadas <= 38)
 		{
-			//DUDA: ¿No hay manera de ir sumandole dias/semanas a la fecha de inicio de la temporada?
-			Jornada j = new Jornada(nJornadas, miListaTemporadas.temporadas.getLast().getFechaIni());
+			if (nJornadas != 1)
+			{
+				int d = fechaInicio.getDate() + 7;
+				fechaInicio.setDate(d);
+			}
+			
+			Jornada j = new Jornada(nJornadas, fechaInicio);
+				
 			int nPartidos = 1;
 			
 			while(nPartidos <= 10)
@@ -140,85 +134,5 @@ public class Liga
 			miListaTemporadas.temporadas.getLast().addJornada(j);
 			nJornadas++;
 		}
-	}
-	
-	public String[] obtenerTemporadas()
-	{
-		Iterator<Temporada> it = temporadas.iterator();
-		String[] resul = new String[temporadas.size()];
-		Temporada aux;
-		
-		for (int i = 0 ; it.hasNext(); i++)
-		{
-			aux = it.next();
-			resul[i] = aux.getTemporada();
-		}
-		return resul;
-	}
-	
-	public String[] obtenerJornadas(int laTemporada)
-	{
-		Temporada temp = temporadas.get(laTemporada);
-		LinkedList<Jornada> listAux = temp.getJornadas();
-		Iterator<Jornada> it = listAux.iterator();
-		String[] resul = new String[listAux.size()];
-		Jornada aux;
-		
-		for (int i = 0; it.hasNext(); i++)
-		{
-			aux = it.next();
-			resul[i] = String.valueOf(aux.getNumJornada());
-		}
-	
-		return resul;
-	}
-	
-	public String[] obtenerEquiposPuntos(int laTemporada,int laJornada)
-	{
-		Jornada aux = temporadas.get(laTemporada).getJornada(laJornada);
-		LinkedList<PuntosJornadaEquipo> lis = aux.getEquipoYPuntos();
-		Iterator<PuntosJornadaEquipo>it = lis.iterator();
-		String[] resul = new String[lis.size()];
-		PuntosJornadaEquipo equip;
-		
-		for (int i = 0; it.hasNext(); i++)
-		{
-			equip = it.next();
-			resul[i] = equip.getEquipo().getNombre() + "->" + equip.getPuntos();
-		}
-		return resul;
-	}
-	
-	public String[] obtenerJugadores(int temporada,int jornada, String equipo)
-	{
-		LinkedList<Jugador> listaConvocados = temporadas.get(temporada).getJornada(jornada).obtenerJugadores(equipo); 
-		return preparJugadoresEstadisticas(listaConvocados);
-	}
-
-	private String[] preparJugadoresEstadisticas(LinkedList<Jugador> listaConvocados) 
-	{
-		String[] resul = new String [listaConvocados.size()];
-		Iterator <Jugador> it = listaConvocados.iterator();
-		Jugador aux;
-		
-		for (int i = 0; it.hasNext(); i++)
-		{
-			aux = it.next();
-			resul[i] = aux.getNombre()+"("+aux.getDorsal()+")";
-		}
-		return resul;
-	}
-
-	public Equipo obtenerEquipo(String equipo) 
-	{
-		return listaEquiposTotal.getEquipoN(equipo);
-	}
-	
-	public String[] obtenerIncidenciasJugador(int pTemporada, int pJornada, String pEquipo, String pJugador)
-	{
-		LinkedList<String> resu = new LinkedList<String>();
-		temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo).obtenerIncidencias(pJugador, resu);
-		
-		return (String[]) resu.toArray();
 	}
 }

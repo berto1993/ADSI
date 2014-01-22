@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class ConexionDB {
-     
+public class ConexionDB
+{     
     public static Connection GetConnection()
     {
         Connection conexion=null;
@@ -15,7 +15,7 @@ public class ConexionDB {
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            String servidor = "jdbc:mysql://localhost/prueba";
+            String servidor = "jdbc:mysql://localhost/liga";
             String usuarioDB="root";
             String passwordDB="";
             conexion= DriverManager.getConnection(servidor,usuarioDB,passwordDB);
