@@ -238,4 +238,15 @@ public class Liga
                 
                 return (String[]) resu.toArray();
         }
+
+        public static Liga getLiga()
+        {
+                if (miListaTemporadas == null)
+                        {
+                        miListaTemporadas = new Liga();
+                        }
+        
+                return miListaTemporadas;       
+        }
+
 }
