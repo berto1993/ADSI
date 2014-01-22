@@ -1,6 +1,7 @@
 package packModelo;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 public class Partido 
 {
@@ -59,5 +60,12 @@ public class Partido
 	public ListaTarjetaPartidoJugador getListaTarjetas() 
 	{		
 		return listaTarjetas;
+	}
+
+	public void obtenerIncidencias(String pJugador, LinkedList<String> resu) 
+	{
+		getListaGoles().obtenerGolesJugador(pJugador, resu);
+		getListaReemplazos().obtenerReemplazos(pJugador,resu);
+		getListaTarjetas().obtenerTarjetas(pJugador, resu);
 	}
 }

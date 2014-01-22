@@ -99,6 +99,7 @@ public class Liga
 		if (temporadas.size()==0)
 		{
 			JOptionPane.showMessageDialog(null,"No existe temporadas","Error",JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
 		else
 		{
@@ -114,7 +115,9 @@ public class Liga
 				aux = it.next();
 				resultados[i] = aux.getNombre() + "-->" + aux.getPuntos(); 
 			}
+			return resultados;
 		}
+		
 	}
 	
 	public void realizarSorteo()
@@ -213,12 +216,9 @@ public class Liga
 	
 	public String[] obtenerIncidenciasJugador(int pTemporada, int pJornada, String pEquipo, String pJugador)
 	{
-		Partido part = temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo);
 		LinkedList<String> resu = new LinkedList<String>();
-		part.getListaGoles().obtenerGolesJugador(pJugador, resu);
-		part.getListaReemplazos().obtenerReemplazos(pJugador,resu);
-		part.getListaTarjetas().obtenerTarjetas(pJugador, resu);
+		temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo).obtenerIncidencias(pJugador, resu);
 		
-		return resu.toArray();
+		return (String[]) resu.toArray();
 	}
 }
