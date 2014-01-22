@@ -7,8 +7,6 @@ import java.util.LinkedList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import prueba.ConexionDB;
-
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
