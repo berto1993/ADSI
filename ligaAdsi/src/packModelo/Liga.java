@@ -93,6 +93,7 @@ public class Liga
 		if (temporadas.size()==0)
 		{
 			JOptionPane.showMessageDialog(null,"No existe temporadas","Error",JOptionPane.ERROR_MESSAGE);
+			return null;
 		}
 		else
 		{
@@ -108,8 +109,9 @@ public class Liga
 				aux = it.next();
 				resultados[i] = aux.getNombre() + "-->" + aux.getPuntos(); 
 			}
+			return resultados;
 		}
-		return resultados;
+		
 	}
 	
 	public void realizarSorteo()
@@ -152,5 +154,88 @@ public class Liga
 		{
 			e.printStackTrace();
 		}
-	}
+		}
+		
+		public String[] obtenerTemporadas()
+        {
+                Iterator<Temporada> it = temporadas.iterator();
+                String[] resul = new String[temporadas.size()];
+                Temporada aux;
+                
+                for (int i = 0 ; it.hasNext(); i++)
+                {
+                        aux = it.next();
+                        resul[i] = aux.getTemporada();
+                }
+                return resul;
+        }
+        
+        public String[] obtenerJornadas(int laTemporada)
+        {
+                Temporada temp = temporadas.get(laTemporada);
+                LinkedList<Jornada> listAux = temp.getJornadas();
+                Iterator<Jornada> it = listAux.iterator();
+                String[] resul = new String[listAux.size()];
+                Jornada aux;
+                
+                for (int i = 0; it.hasNext(); i++)
+                {
+                        aux = it.next();
+                        resul[i] = String.valueOf(aux.getNumJornada());
+                }
+        
+                return resul;
+        }
+        
+        public String[] obtenerEquiposPuntos(int laTemporada,int laJornada)
+        {
+                Jornada aux = temporadas.get(laTemporada).getJornada(laJornada);
+                LinkedList<PuntosJornadaEquipo> lis = aux.getEquipoYPuntos();
+                Iterator<PuntosJornadaEquipo>it = lis.iterator();
+                String[] resul = new String[lis.size()];
+                PuntosJornadaEquipo equip;
+                
+                for (int i = 0; it.hasNext(); i++)
+                {
+                        equip = it.next();
+                        resul[i] = equip.getEquipo().getNombre() + "->" + equip.getPuntos();
+                }
+                return resul;
+        }
+        
+        public String[] obtenerJugadores(int temporada,int jornada, String equipo)
+        {
+                LinkedList<Jugador> listaConvocados = temporadas.get(temporada).getJornada(jornada).obtenerJugadores(equipo);
+                return preparJugadoresEstadisticas(listaConvocados);
+        }
+
+        private String[] preparJugadoresEstadisticas(LinkedList<Jugador> listaConvocados)
+        {
+                String[] resul = new String [listaConvocados.size()];
+                Iterator <Jugador> it = listaConvocados.iterator();
+                Jugador aux;
+                
+                for (int i = 0; it.hasNext(); i++)
+                {
+                        aux = it.next();
+                        resul[i] = aux.getNombre()+"("+aux.getDorsal()+")";
+                }
+                return resul;
+        }
+
+        public Equipo obtenerEquipo(String equipo)
+        {
+                return listaEquiposTotal.getEquipoN(equipo);
+        }
+        
+        public String[] obtenerIncidenciasJugador(int pTemporada, int pJornada, String pEquipo, String pJugador)
+        {
+                Partido part = temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo);
+                LinkedList<String> resu = new LinkedList<String>();
+                part.getListaGoles().obtenerGolesJugador(pJugador, resu);
+                part.getListaReemplazos().obtenerReemplazos(pJugador,resu);
+                part.getListaTarjetas().obtenerTarjetas(pJugador, resu);
+                
+                return (String[]) resu.toArray();
+        }
 }
