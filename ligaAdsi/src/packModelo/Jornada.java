@@ -61,7 +61,6 @@ public class Jornada
 			if (equi.esta(aux))
 				lisF.addLast(aux);
 		}
-	
-	return lisF;
+		return lisF;
 	}
 }

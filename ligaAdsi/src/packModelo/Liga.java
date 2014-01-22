@@ -7,6 +7,11 @@ import java.util.LinkedList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import prueba.ConexionDB;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
 import net.sf.jga.algorithms.Sort;
 
 public class Liga 
@@ -111,7 +116,9 @@ public class Liga
 	{
 		int nJornadas = 1;
 		Date fechaInicio = miListaTemporadas.temporadas.getLast().getFechaIni();
-				
+		Connection a = (Connection) ConexionDB.GetConnection();
+		Statement s = (Statement) a.createStatement();
+		
 		while (nJornadas <= 38)
 		{
 			if (nJornadas != 1)
@@ -121,17 +128,20 @@ public class Liga
 			}
 			
 			Jornada j = new Jornada(nJornadas, fechaInicio);
-				
 			int nPartidos = 1;
 			
 			while(nPartidos <= 10)
 			{
 				Equipo aux1 = miListaTemporadas.temporadas.getLast().cogerEquipo();
 				Equipo aux2 = miListaTemporadas.temporadas.getLast().cogerEquipo();
-				j.anadirPartido(new Partido(j.getFechaInicio(), aux1, aux2, aux1.getEstadio()));	
+				Partido p = new Partido(j.getFechaInicio(), aux1, aux2, aux1.getEstadio());
+				j.anadirPartido(p);
+				int id = nJornadas*100 + nPartidos;
+				s.executeUpdate("insert into partido values ( 0, 0, " + p.getFechaIni() + ", " + id + ", " + p.getFechaIni() + ", " + p.getFechaIni() + ", " + nJornadas);
 				nPartidos++;
 			}
 			miListaTemporadas.temporadas.getLast().addJornada(j);
+			s.executeUpdate("insert into jornada values ( 0, " + j.getFechaInicio() + ", , " + nJornadas);
 			nJornadas++;
 		}
 	}

@@ -68,4 +68,9 @@ public class Partido
 		getListaReemplazos().obtenerReemplazos(pJugador,resu);
 		getListaTarjetas().obtenerTarjetas(pJugador, resu);
 	}
+	
+	public Date getFechaIni()
+	{
+		return this.fecha;
+	}
 }
