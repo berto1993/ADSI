@@ -6,5 +6,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jga"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jre7/lib/mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry kind="lib" path="E:/My Box Files/Universidad/3ºcurso/1ºcuatrimestre/ADSI/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/igor/Downloads/mysql-connector-java-5.1.28/mysql-connector-java-5.1.28-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JGa"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

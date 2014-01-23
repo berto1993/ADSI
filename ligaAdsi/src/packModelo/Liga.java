@@ -1,6 +1,7 @@
 package packModelo;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -255,6 +256,18 @@ public class Liga
                         }
         
                 return miListaTemporadas;       
+        }
+        
+        //obtengo la lista de todas las sustituciones realizadas en un partido
+        public LinkedList<Sustitucion> obteberSustituciones(int pTemporada, int pJornada, String pEquipo){
+        	return temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo).getListaReemplazos().obtenerListaReemplazos();
+        }
+        
+        
+        public void anadirSustitucion(int pTemporada, int pJornada, String pEquipo, Jugador pJugadorE, Jugador pJugadorS, Date pInstante){
+        	Partido partidoActual= temporadas.get(pTemporada).getJornada(pJornada).getListaPartidos().getPartido(pEquipo);
+        	partidoActual.getListaReemplazos().anadirSustitucion(pJugadorE, pJugadorS, pInstante);
+        	
         }
 
 }
