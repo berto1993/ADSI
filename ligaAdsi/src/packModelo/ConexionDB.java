@@ -5,12 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Kevin Arnold
- */
-public class ConexionDB
-{     
+
+public class ConexionDB {
+     
     public static Connection GetConnection()
     {
         Connection conexion=null;
@@ -18,9 +15,9 @@ public class ConexionDB
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            String servidor = "jdbc:mysql://localhost/prueba";
-            String usuarioDB="root";
-            String passwordDB="";
+            String servidor = "jdbc:mysql://localhost/liga";
+            String usuarioDB="root";//usuario de mysql
+            String passwordDB="";//clave de mysql
             conexion= DriverManager.getConnection(servidor,usuarioDB,passwordDB);
         }
         catch(ClassNotFoundException ex)
