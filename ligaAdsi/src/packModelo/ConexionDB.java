@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
  *
  * @author Kevin Arnold
  */
-public class ConexionDB {
-     
+public class ConexionDB
+{     
     public static Connection GetConnection()
     {
         Connection conexion=null;
