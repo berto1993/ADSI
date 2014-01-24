@@ -30,4 +30,14 @@ public class ListaJugadores
 		}
 		return aux;
 	}
+	
+	public void add(Jugador pJugador)
+	{
+		lista.addLast(pJugador);
+	}
+
+	public int tamano() 
+	{
+		return lista.size();
+	}
 }

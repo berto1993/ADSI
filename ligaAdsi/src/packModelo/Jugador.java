@@ -62,4 +62,9 @@ public class Jugador implements Comparable<Jugador>
 	{
 		return dorsal;
 	}
+	
+	public void setTarjetas(int pTarjetas)
+	{
+		tarjetasRecibidas = pTarjetas;
+	}
 }
