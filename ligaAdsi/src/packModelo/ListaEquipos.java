@@ -27,7 +27,10 @@ public class ListaEquipos
 	
 	public void ordenar() 
 	{
-		Sort.sort(lista);
+		LinkedList<Equipo> aux = new LinkedList<Equipo>();
+		Sort.sort(lista, aux);
+		lista = aux;
+		
 	}
 	
 	public int tamano() 
@@ -58,5 +61,10 @@ public class ListaEquipos
 			}
 		
 		return aux;
+	}
+	
+	public void add(Equipo pEquipo)
+	{
+		lista.addLast(pEquipo);
 	}
 }
