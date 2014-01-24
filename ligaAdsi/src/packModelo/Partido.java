@@ -12,12 +12,10 @@ public class Partido
 	private Equipo equipoV;
 	private ListaTarjetaPartidoJugador listaTarjetas;
 	private ListaConvocados listaConvocados;
-	private ListaTitulares listaTitulares;
 	private ListaSustitucion listaReemplazos;
 	private ListaGoles listaGoles;
 	private int codP;
 	private boolean suspendido;
-	private Arbitro arbitro;
 	private String estadio;
 
 	public Partido (Date pFecha, Equipo pEquipoL, Equipo pEquipoV, String pEstadio)
@@ -28,7 +26,6 @@ public class Partido
 		listaConvocados = new ListaConvocados();
 		listaGoles = new ListaGoles();
 		listaTarjetas = new ListaTarjetaPartidoJugador();
-		listaTitulares = new ListaTitulares();
 		listaReemplazos = new ListaSustitucion();
 	}
 
